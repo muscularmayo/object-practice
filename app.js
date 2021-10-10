@@ -27,7 +27,9 @@ Book.prototype.info = function () {
 }
 
 function addBookToLibrary(book) {
+
   return myLibrary.push(book);
+
 }
 
 function bookDisplay() {
@@ -60,14 +62,37 @@ function removeCurrentNode () {
   this.parentElement.remove();
 }
 
+function toggleReadStatus () {
+  let x = this.parentElement
+  x.value.read = !x.value.read
+
+  //let parent = this.parentElement
+  x.innerHTML = `title: ${x.value.title}, author: ${x.value.author}, pages: ${x.value.pages}, read: ${x.value.read}`;
+
+  buttonAppender(x);
+
+}
+
 function createListElement (obj) {
   let info = document.createElement('p')
   info.innerHTML = `title: ${obj.title}, author: ${obj.author}, pages: ${obj.pages}, read: ${obj.read}`;
+  info.value = obj;
+
+  buttonAppender(info);
+
+  container.appendChild(info);
+}
+
+function buttonAppender(element) {
   let remove = document.createElement('button');
   remove.innerHTML = 'remove this'
-
   remove.addEventListener('click', removeCurrentNode)
 
-  info.appendChild(remove)
-  container.appendChild(info);
+  let read = document.createElement('button')
+  read.innerHTML = 'toggle read';
+  read.addEventListener('click', toggleReadStatus)
+
+  element.appendChild(remove);
+  element.appendChild(read);
+
 }
