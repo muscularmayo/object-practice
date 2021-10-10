@@ -13,7 +13,6 @@ function Book (title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-
 }
 
 Book.prototype.info = function () {
@@ -37,7 +36,6 @@ function bookDisplay() {
   for(let i=0; i<myLibrary.length; i++) {
     let current = myLibrary[i]
     createListElement(myLibrary[i])
-
   }
 }
 
@@ -65,8 +63,6 @@ function removeCurrentNode () {
 function toggleReadStatus () {
   let x = this.parentElement
   x.value.read = !x.value.read
-
-  //let parent = this.parentElement
   x.innerHTML = `title: ${x.value.title}, author: ${x.value.author}, pages: ${x.value.pages}, read: ${x.value.read}`;
 
   buttonAppender(x);
