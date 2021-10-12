@@ -7,14 +7,38 @@ const Dune = new Book('Dune', 'Herbert', 250, true);
 addBookToLibrary(Dune)
 const Foundation = new Book('Foundation', 'Asimov', 200, true);
 addBookToLibrary(Foundation)
-
+/*
 function Book (title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
 }
+*/
+class Book () {
+  constructor(title,author,pages,read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
+  info() {
+    let infoString = `${this.title} by ${this.author}, ${this.pages} pages long, `
+    if(this.read === true) {
+      infoString += 'have read'
+    } else {
+      infoString += 'have not read'
+    }
+    return infoString;
+  }
+
+  addBookToLibrary(book) {
+    return myLibrary.push(book);
+
+  }
+}
+/*
 Book.prototype.info = function () {
   let infoString = `${this.title} by ${this.author}, ${this.pages} pages long, `
   if(this.read === true) {
@@ -24,7 +48,7 @@ Book.prototype.info = function () {
   }
   return infoString;
 }
-
+*/
 function addBookToLibrary(book) {
 
   return myLibrary.push(book);
